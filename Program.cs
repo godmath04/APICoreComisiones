@@ -10,7 +10,6 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // === Dominio / Aplicación ===
-// Asegúrate: ICommissionPolicy y FlatCommissionPolicy son 'public' y están en el mismo namespace APICoreComisiones.Domain.Commission
 builder.Services.AddScoped<ICommissionPolicy, FlatCommissionPolicy>();
 builder.Services.AddScoped<ICommissionService, CommissionService>();
 
@@ -18,7 +17,6 @@ builder.Services.AddScoped<ICommissionService, CommissionService>();
 builder.Services.AddControllers()
     .AddJsonOptions(o =>
     {
-        // Si luego usas DateOnly/TimeOnly, agrega converters aquí
     });
 
 // === Swagger ===
